@@ -10,7 +10,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 
-const DOMAIN = "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap";
+const DOMAIN = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap";
 
 export function LandingPage() {
   const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ export function LandingPage() {
     <>
       <link rel="stylesheet" media="print" onload="this.media='all'" href={DOMAIN} />
       <div
-        style={{ fontFamily: "'Inter', sans-serif", backgroundColor: "#FAFAF7", color: "#0A0A0A" }}
+        style={{ fontFamily: "'Manrope', sans-serif", backgroundColor: "#FAFAF7", color: "#0A0A0A" }}
         className="min-h-screen selection:bg-orange-200"
       >
         {/* ── NAV ── */}
@@ -40,7 +40,7 @@ export function LandingPage() {
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <span
-                style={{ fontFamily: "'DM Serif Display', serif", color: "#0A0A0A", fontSize: "1.35rem", letterSpacing: "-0.02em" }}
+                style={{ fontFamily: "'Fraunces', serif", color: "#0A0A0A", fontSize: "1.45rem", letterSpacing: "-0.03em", fontWeight: 700, fontOpticalSizing: "auto" }}
               >
                 GRIPR
               </span>
@@ -51,7 +51,7 @@ export function LandingPage() {
                 Beta
               </span>
             </div>
-            <span style={{ color: "#6B6B5E", fontSize: "0.82rem", fontStyle: "italic" }}>
+            <span style={{ color: "#6B6B5E", fontSize: "0.82rem", fontStyle: "italic", fontFamily: "'Fraunces', serif", fontWeight: 300, fontOpticalSizing: "auto" }}>
               India bolti hai. Builders sunenge.
             </span>
             <button
@@ -74,7 +74,7 @@ export function LandingPage() {
             <span
               style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E85D04", display: "inline-block", animation: "pulse 2s infinite" }}
             />
-            <span style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", color: "#6B6B5E", textTransform: "uppercase" }}>
+            <span style={{ fontSize: "0.7rem", fontFamily: "'Space Mono', monospace", fontWeight: 400, letterSpacing: "0.12em", color: "#8A8A78", textTransform: "uppercase" }}>
               12,000+ Problems Captured in Beta
             </span>
           </div>
@@ -83,20 +83,22 @@ export function LandingPage() {
           <div className="max-w-5xl">
             <h1
               style={{
-                fontFamily: "'DM Serif Display', serif",
-                fontSize: "clamp(3rem, 7vw, 6.5rem)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.02em",
+                fontFamily: "'Fraunces', serif",
+                fontSize: "clamp(3.2rem, 7.5vw, 7.5rem)",
+                lineHeight: 0.98,
+                letterSpacing: "-0.04em",
                 color: "#0A0A0A",
-                marginBottom: "1.5rem"
+                marginBottom: "1.75rem",
+                fontOpticalSizing: "auto",
+                fontWeight: 800,
               }}
             >
               Stop guessing.<br />
-              <em style={{ color: "#E85D04", fontStyle: "italic" }}>Build what Bharat&nbsp;</em><br />
+              <em style={{ color: "#E85D04", fontStyle: "italic", fontWeight: 300 }}>Build what Bharat&nbsp;</em><br />
               actually needs.
             </h1>
             <p
-              style={{ fontSize: "1.2rem", color: "#4A4A3F", maxWidth: "34rem", lineHeight: 1.65, marginBottom: "2.5rem" }}
+              style={{ fontSize: "1.1rem", color: "#4A4A3F", maxWidth: "34rem", lineHeight: 1.75, marginBottom: "2.5rem", fontWeight: 400 }}
             >
               India's first anonymous problem-to-product platform — real frustrations from 9 languages, ranked by AI demand every week.
             </p>
@@ -112,10 +114,10 @@ export function LandingPage() {
               required
               style={{
                 border: "1.5px solid #D4D0C8", borderRadius: "999px",
-                padding: "0.75rem 1.4rem", fontSize: "0.95rem",
+                padding: "0.75rem 1.4rem", fontSize: "0.9rem",
                 outline: "none", backgroundColor: "#fff",
                 color: "#0A0A0A", minWidth: "260px", flex: "1 1 260px",
-                fontFamily: "'Inter', sans-serif"
+                fontFamily: "'Manrope', sans-serif", fontWeight: 500
               }}
             />
             <button
@@ -144,8 +146,8 @@ export function LandingPage() {
               { val: "₹0", label: "Cost to Users" },
             ].map((s) => (
               <div key={s.label} style={{ textAlign: "center" }}>
-                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.4rem", color: "#0A0A0A", letterSpacing: "-0.02em" }}>{s.val}</div>
-                <div style={{ fontSize: "0.75rem", color: "#8A8A78", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600, marginTop: "0.25rem" }}>{s.label}</div>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "2.8rem", color: "#0A0A0A", letterSpacing: "-0.04em", fontWeight: 700, fontOpticalSizing: "auto" }}>{s.val}</div>
+                <div style={{ fontSize: "0.65rem", color: "#8A8A78", textTransform: "uppercase", letterSpacing: "0.12em", fontFamily: "'Space Mono', monospace", marginTop: "0.4rem" }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -155,10 +157,10 @@ export function LandingPage() {
         <section style={{ backgroundColor: "#F2EFE9", padding: "6rem 0" }}>
           <div className="max-w-7xl mx-auto px-6">
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1rem" }}>
-              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", letterSpacing: "-0.02em", color: "#0A0A0A", lineHeight: 1.1 }}>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.2rem, 4vw, 3.8rem)", letterSpacing: "-0.04em", color: "#0A0A0A", lineHeight: 1.0, fontWeight: 700, fontOpticalSizing: "auto" }}>
                 From frustration<br />to product signal.
               </h2>
-              <p style={{ color: "#6B6B5E", fontSize: "1rem", maxWidth: "22rem", lineHeight: 1.6 }}>
+              <p style={{ color: "#6B6B5E", fontSize: "0.95rem", maxWidth: "22rem", lineHeight: 1.75, fontWeight: 400 }}>
                 Three coordinated AI agents process every submission in real time — no opinions, just data.
               </p>
             </div>
@@ -188,10 +190,10 @@ export function LandingPage() {
                 }
               ].map((item) => (
                 <div key={item.step} style={{ backgroundColor: item.bg, padding: "2.5rem 2rem" }}>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: "#B0AC9E", fontWeight: 500, marginBottom: "1.5rem", letterSpacing: "0.05em" }}>{item.step}</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#B0AC9E", fontWeight: 400, marginBottom: "1.75rem", letterSpacing: "0.1em" }}>{item.step}</div>
                   <div style={{ marginBottom: "1rem" }}>{item.icon}</div>
-                  <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.35rem", color: "#0A0A0A", marginBottom: "0.75rem", lineHeight: 1.2 }}>{item.title}</h3>
-                  <p style={{ color: "#6B6B5E", fontSize: "0.9rem", lineHeight: 1.7 }}>{item.body}</p>
+                  <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.45rem", color: "#0A0A0A", marginBottom: "0.65rem", lineHeight: 1.15, fontWeight: 700, fontOpticalSizing: "auto", letterSpacing: "-0.02em" }}>{item.title}</h3>
+                  <p style={{ color: "#6B6B5E", fontSize: "0.875rem", lineHeight: 1.8, fontWeight: 400 }}>{item.body}</p>
                 </div>
               ))}
             </div>
@@ -203,8 +205,8 @@ export function LandingPage() {
           <div className="max-w-7xl mx-auto px-6">
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", flexWrap: "wrap", gap: "1rem" }}>
               <div>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#E85D04", fontWeight: 500, letterSpacing: "0.1em", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>● Live Feed Preview</span>
-                <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#E85D04", fontWeight: 400, letterSpacing: "0.12em", display: "block", marginBottom: "0.85rem", textTransform: "uppercase" }}>● Live Feed Preview</span>
+                <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#0A0A0A", letterSpacing: "-0.04em", lineHeight: 0.98, fontWeight: 700, fontOpticalSizing: "auto" }}>
                   Real problems.<br />Waiting for solutions.
                 </h2>
               </div>
@@ -222,7 +224,7 @@ export function LandingPage() {
               ].map((item) => (
                 <div key={item.id} style={{ backgroundColor: "#fff", padding: "2rem" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "#B0AC9E", fontWeight: 500 }}>{item.id}</span>
+                    <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#B0AC9E", fontWeight: 400, letterSpacing: "0.05em" }}>{item.id}</span>
                     <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.72rem", fontWeight: 700, color: "#2D6A4F", backgroundColor: "#D8F3DC", padding: "3px 10px", borderRadius: "999px" }}>
                       <TrendingUp size={11} /> {item.trend}
                     </span>
@@ -230,7 +232,7 @@ export function LandingPage() {
                   <p style={{ fontSize: "0.78rem", color: "#9E9E8E", marginBottom: "0.6rem" }}>
                     Reported by: <strong style={{ color: "#4A4A3F" }}>{item.persona}</strong>
                   </p>
-                  <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.15rem", color: "#0A0A0A", lineHeight: 1.45, marginBottom: "1.25rem" }}>
+                  <p style={{ fontFamily: "'Fraunces', serif", fontSize: "1.2rem", color: "#0A0A0A", lineHeight: 1.5, marginBottom: "1.25rem", fontWeight: 400, fontOpticalSizing: "auto", letterSpacing: "-0.01em" }}>
                     "{item.problem}"
                   </p>
                   <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", alignItems: "center" }}>
@@ -251,8 +253,8 @@ export function LandingPage() {
         <section style={{ backgroundColor: "#0A0A0A", padding: "6rem 0" }}>
           <div className="max-w-7xl mx-auto px-6">
             <div style={{ marginBottom: "3.5rem" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#E85D04", fontWeight: 500, letterSpacing: "0.1em", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>Why GRIPR?</span>
-              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#FAFAF7", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#E85D04", fontWeight: 400, letterSpacing: "0.12em", display: "block", marginBottom: "0.85rem", textTransform: "uppercase" }}>Why GRIPR?</span>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.2rem, 4vw, 3.4rem)", color: "#FAFAF7", letterSpacing: "-0.04em", lineHeight: 0.98, fontWeight: 700, fontOpticalSizing: "auto" }}>
                 The world builds for the US.<br />We build for Bharat.
               </h2>
             </div>
@@ -292,8 +294,8 @@ export function LandingPage() {
         <section style={{ backgroundColor: "#FAFAF7", padding: "6rem 0" }}>
           <div className="max-w-7xl mx-auto px-6">
             <div style={{ marginBottom: "3.5rem" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#E85D04", fontWeight: 500, letterSpacing: "0.1em", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>Pricing</span>
-              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#E85D04", fontWeight: 400, letterSpacing: "0.12em", display: "block", marginBottom: "0.85rem", textTransform: "uppercase" }}>Pricing</span>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.2rem, 4vw, 3.4rem)", color: "#0A0A0A", letterSpacing: "-0.04em", lineHeight: 0.98, fontWeight: 700, fontOpticalSizing: "auto" }}>
                 Users are free. Forever.<br />Builders pay for the signal.
               </h2>
             </div>
@@ -302,8 +304,8 @@ export function LandingPage() {
               {/* Basic */}
               <div style={{ border: "1.5px solid #E8E5DF", borderRadius: "1.25rem", padding: "2rem", backgroundColor: "#fff" }}>
                 <h3 style={{ fontSize: "0.85rem", fontWeight: 600, color: "#6B6B5E", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Builder Basic</h3>
-                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1 }}>
-                  ₹499<span style={{ fontSize: "1rem", color: "#9E9E8E", fontFamily: "'Inter', sans-serif" }}>/mo</span>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: "3rem", color: "#0A0A0A", letterSpacing: "-0.04em", lineHeight: 1, fontWeight: 700, fontOpticalSizing: "auto" }}>
+                  ₹499<span style={{ fontSize: "1rem", color: "#9E9E8E", fontFamily: "'Manrope', sans-serif", fontWeight: 400, letterSpacing: 0 }}>/mo</span>
                 </div>
                 <p style={{ color: "#9E9E8E", fontSize: "0.82rem", margin: "0.75rem 0 1.5rem" }}>Essential signals for indie hackers</p>
                 <div style={{ borderTop: "1px solid #E8E5DF", paddingTop: "1.25rem", display: "flex", flexDirection: "column", gap: "0.65rem" }}>
