@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "0xACw_kKNOmXPXwkvxi-a"
+uri = "file://artifacts/mockup-sandbox/public/images/gripr-hero.png"
+type = "image"
+title = "Vibrant Indian street scene"
+
+[[generated]]
+id = "WvlQR2g-_K6lUoqmT3MHK"
+uri = "file://artifacts/mockup-sandbox/public/images/gripr-process.png"
+type = "image"
+title = "AI problem clustering data visualization"
+
+[[generated]]
+id = "CFYCEAVOMNC1mB_ARP4fW"
+uri = "file://artifacts/mockup-sandbox/public/images/gripr-insights.png"
+type = "image"
+title = "Developer analyzing data insights"
