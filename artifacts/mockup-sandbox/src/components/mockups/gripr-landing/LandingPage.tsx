@@ -1,24 +1,16 @@
-import React, { useState } from "react";
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  BarChart3, 
-  Globe2, 
-  Zap, 
-  Users, 
-  TrendingUp, 
+import { useState } from "react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  TrendingUp,
   AlertTriangle,
-  Lightbulb,
-  Shield,
+  Zap,
   MessageSquare,
-  Building
+  Lightbulb,
 } from "lucide-react";
-import { Button } from "../../ui/button";
-import { Input } from "../../ui/input";
-import { Badge } from "../../ui/badge";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../ui/accordion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
+
+const DOMAIN = "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap";
 
 export function LandingPage() {
   const [email, setEmail] = useState("");
@@ -34,467 +26,409 @@ export function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-slate-200 font-sans selection:bg-orange-500/30">
-      
-      {/* HEADER */}
-      <header className="fixed top-0 w-full z-50 border-b border-white/10 bg-[#050505]/80 backdrop-blur-md">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Zap className="w-6 h-6 text-orange-500 fill-orange-500" />
-            <span className="text-xl font-bold tracking-tight text-white">GRIPR</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="hidden md:inline-flex text-sm text-slate-400 font-medium">India bolti hai. Builders sunenge.</span>
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white rounded-full font-bold px-6">
+    <>
+      <link rel="stylesheet" media="print" onload="this.media='all'" href={DOMAIN} />
+      <div
+        style={{ fontFamily: "'Inter', sans-serif", backgroundColor: "#FAFAF7", color: "#0A0A0A" }}
+        className="min-h-screen selection:bg-orange-200"
+      >
+        {/* ── NAV ── */}
+        <nav
+          style={{ borderBottom: "1px solid #E8E5DF", backgroundColor: "#FAFAF7" }}
+          className="sticky top-0 z-50 backdrop-blur-sm"
+        >
+          <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span
+                style={{ fontFamily: "'DM Serif Display', serif", color: "#0A0A0A", fontSize: "1.35rem", letterSpacing: "-0.02em" }}
+              >
+                GRIPR
+              </span>
+              <span
+                style={{ backgroundColor: "#E85D04", color: "#fff", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.12em", padding: "2px 7px", borderRadius: "999px" }}
+                className="uppercase"
+              >
+                Beta
+              </span>
+            </div>
+            <span style={{ color: "#6B6B5E", fontSize: "0.82rem", fontStyle: "italic" }}>
+              India bolti hai. Builders sunenge.
+            </span>
+            <button
+              onClick={() => document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" })}
+              style={{
+                backgroundColor: "#0A0A0A", color: "#FAFAF7",
+                borderRadius: "999px", padding: "0.5rem 1.25rem",
+                fontSize: "0.85rem", fontWeight: 600, cursor: "pointer", border: "none"
+              }}
+            >
               Join Waitlist
-            </Button>
+            </button>
           </div>
-        </div>
-      </header>
+        </nav>
 
-      <main className="pt-16">
-        {/* HERO SECTION */}
-        <section className="relative pt-20 pb-32 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/80 to-[#050505] z-10" />
-            <img 
-              src="/__mockup/images/gripr-hero.png" 
-              alt="Vibrant India" 
-              className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+        {/* ── HERO ── */}
+        <section className="max-w-7xl mx-auto px-6 pt-20 pb-24">
+          {/* eyebrow */}
+          <div className="flex items-center gap-3 mb-10">
+            <span
+              style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E85D04", display: "inline-block", animation: "pulse 2s infinite" }}
             />
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-orange-600/20 blur-[120px] rounded-full pointer-events-none" />
+            <span style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", color: "#6B6B5E", textTransform: "uppercase" }}>
+              12,000+ Problems Captured in Beta
+            </span>
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <Badge variant="outline" className="border-orange-500/30 text-orange-400 bg-orange-500/10 px-4 py-1 text-sm mb-6 rounded-full">
-                Beta is live. 12,000+ problems analyzed.
-              </Badge>
-              
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-[1.1]">
-                Stop guessing. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">
-                  Build what India actually needs.
-                </span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">
-                India's first anonymous problem-to-product platform. Real frustrations from 9 languages, ranked by AI demand.
+          {/* headline */}
+          <div className="max-w-5xl">
+            <h1
+              style={{
+                fontFamily: "'DM Serif Display', serif",
+                fontSize: "clamp(3rem, 7vw, 6.5rem)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+                color: "#0A0A0A",
+                marginBottom: "1.5rem"
+              }}
+            >
+              Stop guessing.<br />
+              <em style={{ color: "#E85D04", fontStyle: "italic" }}>Build what Bharat&nbsp;</em><br />
+              actually needs.
+            </h1>
+            <p
+              style={{ fontSize: "1.2rem", color: "#4A4A3F", maxWidth: "34rem", lineHeight: 1.65, marginBottom: "2.5rem" }}
+            >
+              India's first anonymous problem-to-product platform — real frustrations from 9 languages, ranked by AI demand every week.
+            </p>
+          </div>
+
+          {/* form */}
+          <form id="waitlist-form" onSubmit={handleSubmit} style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              style={{
+                border: "1.5px solid #D4D0C8", borderRadius: "999px",
+                padding: "0.75rem 1.4rem", fontSize: "0.95rem",
+                outline: "none", backgroundColor: "#fff",
+                color: "#0A0A0A", minWidth: "260px", flex: "1 1 260px",
+                fontFamily: "'Inter', sans-serif"
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                backgroundColor: submitted ? "#2D6A4F" : "#E85D04",
+                color: "#fff", border: "none", borderRadius: "999px",
+                padding: "0.75rem 1.8rem", fontSize: "0.95rem", fontWeight: 700,
+                cursor: "pointer", display: "flex", alignItems: "center", gap: "0.4rem",
+                transition: "background-color 0.2s", whiteSpace: "nowrap"
+              }}
+            >
+              {submitted ? "You're in ✓" : (<>Get Early Access <ArrowRight size={15} /></>)}
+            </button>
+          </form>
+          <p style={{ fontSize: "0.8rem", color: "#9E9E8E" }}>340+ builders waitlisted · ₹0 for users · Always free to submit</p>
+
+          {/* stats bar */}
+          <div
+            style={{ marginTop: "4.5rem", borderTop: "1px solid #E8E5DF", borderBottom: "1px solid #E8E5DF", padding: "2rem 0", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem" }}
+          >
+            {[
+              { val: "12,000+", label: "Problems in Beta" },
+              { val: "340+", label: "Builders Waitlisted" },
+              { val: "9", label: "Indian Languages" },
+              { val: "₹0", label: "Cost to Users" },
+            ].map((s) => (
+              <div key={s.label} style={{ textAlign: "center" }}>
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.4rem", color: "#0A0A0A", letterSpacing: "-0.02em" }}>{s.val}</div>
+                <div style={{ fontSize: "0.75rem", color: "#8A8A78", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600, marginTop: "0.25rem" }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── HOW IT WORKS ── */}
+        <section style={{ backgroundColor: "#F2EFE9", padding: "6rem 0" }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1rem" }}>
+              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", letterSpacing: "-0.02em", color: "#0A0A0A", lineHeight: 1.1 }}>
+                From frustration<br />to product signal.
+              </h2>
+              <p style={{ color: "#6B6B5E", fontSize: "1rem", maxWidth: "22rem", lineHeight: 1.6 }}>
+                Three coordinated AI agents process every submission in real time — no opinions, just data.
               </p>
-
-              <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 relative">
-                <div className="flex shadow-2xl shadow-orange-900/20 rounded-full bg-white/5 border border-white/10 p-1 focus-within:border-orange-500/50 transition-colors">
-                  <Input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="bg-transparent border-0 focus-visible:ring-0 text-white placeholder:text-slate-500 px-6 h-12"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <Button type="submit" className="bg-orange-600 hover:bg-orange-700 text-white rounded-full h-12 px-8 font-bold">
-                    {submitted ? "Joined!" : "Get Early Access"}
-                  </Button>
-                </div>
-                <p className="text-sm text-slate-500 mt-4">Join 340+ builders already on the waitlist. ₹0 for users.</p>
-              </form>
             </div>
 
-            {/* STATS */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-24 border-y border-white/10 py-10">
-              <div className="text-center space-y-2">
-                <h3 className="text-4xl font-bold text-white">12k+</h3>
-                <p className="text-sm text-slate-400 uppercase tracking-wider font-semibold">Problems in Beta</p>
-              </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-4xl font-bold text-white">340+</h3>
-                <p className="text-sm text-slate-400 uppercase tracking-wider font-semibold">Builders Waitlisted</p>
-              </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-4xl font-bold text-white">9</h3>
-                <p className="text-sm text-slate-400 uppercase tracking-wider font-semibold">Indian Languages</p>
-              </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-4xl font-bold text-white">₹0</h3>
-                <p className="text-sm text-slate-400 uppercase tracking-wider font-semibold">Cost to Users</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* HOW IT WORKS */}
-        <section className="py-24 bg-[#0a0a0a]">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">How GRIPR Works</h2>
-              <p className="text-xl text-slate-400 max-w-2xl mx-auto">From raw frustration to validated product idea in 3 steps.</p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-b from-orange-500/10 to-transparent rounded-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Card className="bg-[#111] border-white/5 h-full relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-transparent" />
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-4 border border-orange-500/30">
-                      <MessageSquare className="w-6 h-6 text-orange-500" />
-                    </div>
-                    <CardTitle className="text-2xl text-white">1. India Shares Frustrations</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-slate-400 text-lg">
-                    Anyone can submit their daily problems anonymously in 30 seconds. Hindi, English, or 7 other regional languages. Zero login required.
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent rounded-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Card className="bg-[#111] border-white/5 h-full relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-transparent" />
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-4 border border-blue-500/30">
-                      <Zap className="w-6 h-6 text-blue-500" />
-                    </div>
-                    <CardTitle className="text-2xl text-white">2. AI Ranks Real Demand</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-slate-400 text-lg">
-                    Our semantic engine clusters similar problems, scores frequency, and tracks momentum. No more guessing what the market actually needs.
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-b from-green-500/10 to-transparent rounded-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Card className="bg-[#111] border-white/5 h-full relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-transparent" />
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center mb-4 border border-green-500/30">
-                      <Lightbulb className="w-6 h-6 text-green-500" />
-                    </div>
-                    <CardTitle className="text-2xl text-white">3. Builders Get the Signal</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-slate-400 text-lg">
-                    Every Monday morning, get a digest of the top 10 unsolved problems in your specific niche. Build with confidence before writing code.
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-            
-            <div className="mt-20 rounded-3xl overflow-hidden border border-white/10 max-w-5xl mx-auto relative aspect-video bg-black shadow-2xl shadow-orange-900/20">
-              <img 
-                src="/__mockup/images/gripr-process.png" 
-                alt="AI Processing Problems" 
-                className="w-full h-full object-cover opacity-80"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-white">The GRIPR Engine</h3>
-                  <p className="text-slate-300">Processing thousands of daily signals into clear, actionable builder insights.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* REAL PROBLEMS */}
-        <section className="py-24 bg-[#050505] relative border-y border-white/5">
-          <div className="absolute left-0 top-0 w-1/3 h-full bg-orange-600/5 blur-[150px] pointer-events-none" />
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-              <div className="max-w-2xl">
-                <Badge variant="outline" className="border-orange-500/30 text-orange-400 bg-orange-500/10 mb-4">
-                  Live Feed Preview
-                </Badge>
-                <h2 className="text-3xl md:text-5xl font-bold text-white">Real problems.<br/>Waiting for solutions.</h2>
-              </div>
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 shrink-0">
-                View Live Beta Board
-              </Button>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5px", backgroundColor: "#D4D0C8" }}>
               {[
                 {
-                  id: "PRB-8921",
-                  persona: "Farmer, Maharashtra",
-                  problem: "Tomatoes rotting because I can't find a reefer truck for small loads to the city.",
-                  demand: "Very High",
-                  trend: "+42% this week",
-                  tags: ["AgriTech", "Logistics"]
+                  step: "01",
+                  icon: <MessageSquare size={22} color="#E85D04" />,
+                  title: "India Shares Frustrations",
+                  body: "Anyone submits anonymously in 30 seconds. Hindi, Hinglish, English — or 6 other regional languages. Zero login. Zero social pressure. Pure signal.",
+                  bg: "#fff"
                 },
                 {
-                  id: "PRB-7743",
-                  persona: "Engineering Student, Delhi",
-                  problem: "Taking factory client orders but impossible to find a verified, skilled welder nearby.",
-                  demand: "High",
-                  trend: "+18% this week",
-                  tags: ["Gig Economy", "Manufacturing"]
+                  step: "02",
+                  icon: <Zap size={22} color="#E85D04" />,
+                  title: "AI Ranks by Real Demand",
+                  body: "Semantic embeddings cluster similar problems regardless of language or phrasing. Frequency scored, momentum tracked, market size estimated per cluster.",
+                  bg: "#FAFAF7"
                 },
                 {
-                  id: "PRB-9012",
-                  persona: "Manufacturer, Gujarat",
-                  problem: "Losing export deals constantly because customs paperwork requirements keep changing silently.",
-                  demand: "Critical",
-                  trend: "+65% this week",
-                  tags: ["Export", "Compliance", "LegalTech"]
-                },
-                {
-                  id: "PRB-6534",
-                  persona: "Small Business Owner, Bangalore",
-                  problem: "No reliable way to verify if a raw material supplier is genuine before paying an advance.",
-                  demand: "Very High",
-                  trend: "+30% this week",
-                  tags: ["B2B", "FinTech", "Trust"]
+                  step: "03",
+                  icon: <Lightbulb size={22} color="#E85D04" />,
+                  title: "Builders Get the Signal",
+                  body: "Every Monday: a curated digest of the top 10 most-demanded unsolved problems in your chosen niche. Anonymous quotes included. Build with confidence.",
+                  bg: "#fff"
                 }
-              ].map((item, i) => (
-                <Card key={i} className="bg-[#0a0a0a] border-white/10 hover:border-orange-500/50 transition-colors group">
-                  <CardHeader className="pb-2">
-                    <div className="flex justify-between items-start mb-2">
-                      <Badge variant="secondary" className="bg-white/5 text-slate-300 hover:bg-white/10">
-                        {item.id}
-                      </Badge>
-                      <div className="flex items-center gap-2 text-xs font-medium text-orange-400 bg-orange-500/10 px-2 py-1 rounded-md">
-                        <TrendingUp className="w-3 h-3" /> {item.trend}
-                      </div>
-                    </div>
-                    <CardTitle className="text-lg text-slate-400 font-normal">
-                      Reported by: <span className="text-white font-medium">{item.persona}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-xl font-medium text-white leading-snug mb-6">
-                      "{item.problem}"
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map(tag => (
-                        <span key={tag} className="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded-md text-slate-400">
-                          {tag}
-                        </span>
-                      ))}
-                      <span className="text-xs px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-400 rounded-md ml-auto font-medium flex items-center gap-1">
-                        <AlertTriangle className="w-3 h-3" /> Demand: {item.demand}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
+              ].map((item) => (
+                <div key={item.step} style={{ backgroundColor: item.bg, padding: "2.5rem 2rem" }}>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: "#B0AC9E", fontWeight: 500, marginBottom: "1.5rem", letterSpacing: "0.05em" }}>{item.step}</div>
+                  <div style={{ marginBottom: "1rem" }}>{item.icon}</div>
+                  <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.35rem", color: "#0A0A0A", marginBottom: "0.75rem", lineHeight: 1.2 }}>{item.title}</h3>
+                  <p style={{ color: "#6B6B5E", fontSize: "0.9rem", lineHeight: 1.7 }}>{item.body}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* COMPARISON */}
-        <section className="py-24 bg-[#0a0a0a]">
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Why GRIPR?</h2>
-              <p className="text-xl text-slate-400">The world builds for the US. We build for Bharat.</p>
+        {/* ── LIVE PROBLEMS FEED ── */}
+        <section style={{ padding: "6rem 0", backgroundColor: "#FAFAF7" }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", flexWrap: "wrap", gap: "1rem" }}>
+              <div>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#E85D04", fontWeight: 500, letterSpacing: "0.1em", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>● Live Feed Preview</span>
+                <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                  Real problems.<br />Waiting for solutions.
+                </h2>
+              </div>
+              <button style={{ backgroundColor: "transparent", border: "1.5px solid #D4D0C8", borderRadius: "999px", padding: "0.6rem 1.2rem", fontSize: "0.82rem", color: "#4A4A3F", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.35rem", fontWeight: 500 }}>
+                View Beta Board <ArrowUpRight size={14} />
+              </button>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="border-b border-white/10 text-slate-400 text-lg">
-                    <th className="py-6 px-4 font-normal w-1/4">Feature</th>
-                    <th className="py-6 px-4 font-semibold text-white bg-white/5 rounded-t-xl w-1/4">GRIPR</th>
-                    <th className="py-6 px-4 font-normal w-1/4">ProductHunt</th>
-                    <th className="py-6 px-4 font-normal w-1/4">Reddit / Twitter</th>
-                  </tr>
-                </thead>
-                <tbody className="text-slate-300">
-                  <tr className="border-b border-white/5">
-                    <td className="py-6 px-4 font-medium">Core Focus</td>
-                    <td className="py-6 px-4 bg-white/5 font-bold text-orange-400">Raw unbuilt demand</td>
-                    <td className="py-6 px-4">Finished solutions</td>
-                    <td className="py-6 px-4">General discussion</td>
-                  </tr>
-                  <tr className="border-b border-white/5">
-                    <td className="py-6 px-4 font-medium">Language Support</td>
-                    <td className="py-6 px-4 bg-white/5 text-white flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-500" /> Hindi + 8 Regional
-                    </td>
-                    <td className="py-6 px-4">English only</td>
-                    <td className="py-6 px-4">Mostly English</td>
-                  </tr>
-                  <tr className="border-b border-white/5">
-                    <td className="py-6 px-4 font-medium">Signal vs Noise</td>
-                    <td className="py-6 px-4 bg-white/5 text-white flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-500" /> AI Ranked Demand
-                    </td>
-                    <td className="py-6 px-4">Upvotes on UI</td>
-                    <td className="py-6 px-4">Chronological chaos</td>
-                  </tr>
-                  <tr className="border-b border-white/5">
-                    <td className="py-6 px-4 font-medium">Geography</td>
-                    <td className="py-6 px-4 bg-white/5 text-white rounded-b-xl border-b-2 border-orange-500">
-                      Bharat-Native
-                    </td>
-                    <td className="py-6 px-4">US-Biased</td>
-                    <td className="py-6 px-4">Global</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* BUILDER INSIGHTS IMAGE */}
-        <section className="py-12 bg-[#050505]">
-          <div className="container mx-auto px-4">
-             <div className="rounded-3xl overflow-hidden border border-white/10 max-w-6xl mx-auto relative aspect-[21/9] bg-black">
-                <img 
-                  src="/__mockup/images/gripr-insights.png" 
-                  alt="Builder Insights" 
-                  className="w-full h-full object-cover opacity-60"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex items-center p-12">
-                  <div className="max-w-lg space-y-6">
-                    <h3 className="text-4xl font-bold text-white leading-tight">Don't write code until you know they'll buy.</h3>
-                    <p className="text-xl text-slate-300">Get weekly digests of validated problems in your exact niche. Claim a problem, build the solution, and launch to a pre-warmed waitlist.</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1px", backgroundColor: "#E8E5DF" }}>
+              {[
+                { id: "PRB-8921", persona: "Farmer, Maharashtra", problem: "Tomatoes rotting because I can't find a reefer truck for small loads to the city.", demand: "Very High", trend: "+42% this week", tags: ["AgriTech", "Logistics"] },
+                { id: "PRB-7743", persona: "Engineering Student, Delhi", problem: "Taking factory client orders but impossible to find a verified, skilled welder nearby.", demand: "High", trend: "+18% this week", tags: ["Gig Economy", "Manufacturing"] },
+                { id: "PRB-9012", persona: "Manufacturer, Gujarat", problem: "Losing export deals constantly because customs paperwork requirements keep changing silently.", demand: "Critical", trend: "+65% this week", tags: ["Export", "LegalTech"] },
+                { id: "PRB-6534", persona: "Small Business Owner, Bangalore", problem: "No reliable way to verify if a raw material supplier is genuine before paying an advance.", demand: "Very High", trend: "+30% this week", tags: ["B2B", "FinTech"] },
+              ].map((item) => (
+                <div key={item.id} style={{ backgroundColor: "#fff", padding: "2rem" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "#B0AC9E", fontWeight: 500 }}>{item.id}</span>
+                    <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.72rem", fontWeight: 700, color: "#2D6A4F", backgroundColor: "#D8F3DC", padding: "3px 10px", borderRadius: "999px" }}>
+                      <TrendingUp size={11} /> {item.trend}
+                    </span>
+                  </div>
+                  <p style={{ fontSize: "0.78rem", color: "#9E9E8E", marginBottom: "0.6rem" }}>
+                    Reported by: <strong style={{ color: "#4A4A3F" }}>{item.persona}</strong>
+                  </p>
+                  <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.15rem", color: "#0A0A0A", lineHeight: 1.45, marginBottom: "1.25rem" }}>
+                    "{item.problem}"
+                  </p>
+                  <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", alignItems: "center" }}>
+                    {item.tags.map((t) => (
+                      <span key={t} style={{ fontSize: "0.7rem", padding: "3px 9px", border: "1px solid #E8E5DF", borderRadius: "999px", color: "#6B6B5E", backgroundColor: "#F5F3EF" }}>{t}</span>
+                    ))}
+                    <span style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "0.25rem", fontSize: "0.7rem", fontWeight: 700, color: "#C0392B", backgroundColor: "#FEE2E2", padding: "3px 10px", borderRadius: "999px" }}>
+                      <AlertTriangle size={10} /> {item.demand}
+                    </span>
                   </div>
                 </div>
-             </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* PRICING */}
-        <section className="py-24 bg-[#0a0a0a] border-t border-white/5">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Pricing for Builders</h2>
-              <p className="text-xl text-slate-400">Users who share problems will always be free. Builders pay for the signal.</p>
+        {/* ── COMPARISON ── */}
+        <section style={{ backgroundColor: "#0A0A0A", padding: "6rem 0" }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <div style={{ marginBottom: "3.5rem" }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#E85D04", fontWeight: 500, letterSpacing: "0.1em", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>Why GRIPR?</span>
+              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#FAFAF7", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                The world builds for the US.<br />We build for Bharat.
+              </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: "1px", backgroundColor: "#2A2A2A" }}>
+              {/* Header row */}
+              <div style={{ backgroundColor: "#0A0A0A", padding: "1.25rem 1.5rem" }}></div>
+              {[
+                { name: "GRIPR", highlight: true },
+                { name: "ProductHunt", highlight: false },
+                { name: "Reddit / Twitter", highlight: false },
+              ].map((col) => (
+                <div key={col.name} style={{ backgroundColor: col.highlight ? "#1A1A1A" : "#0A0A0A", padding: "1.25rem 1.5rem", borderBottom: col.highlight ? "2px solid #E85D04" : "none" }}>
+                  <span style={{ fontWeight: col.highlight ? 700 : 500, color: col.highlight ? "#E85D04" : "#6B6B5E", fontSize: "0.9rem" }}>{col.name}</span>
+                </div>
+              ))}
+
+              {/* Rows */}
+              {[
+                { feature: "Core Focus", gripr: "Raw unbuilt demand", ph: "Finished solutions", reddit: "General discussion" },
+                { feature: "Language Support", gripr: "Hindi + 8 Regional ✓", ph: "English only", reddit: "Mostly English" },
+                { feature: "Signal Quality", gripr: "AI Frequency Ranked", ph: "Upvotes on UI", reddit: "Chronological chaos" },
+                { feature: "Geography", gripr: "Bharat-Native", ph: "US-Biased", reddit: "Global (US-heavy)" },
+              ].map((row) => (
+                <>
+                  <div key={row.feature + "f"} style={{ backgroundColor: "#0A0A0A", padding: "1.25rem 1.5rem", fontSize: "0.85rem", color: "#6B6B5E", borderBottom: "1px solid #1A1A1A" }}>{row.feature}</div>
+                  <div key={row.feature + "g"} style={{ backgroundColor: "#1A1A1A", padding: "1.25rem 1.5rem", fontSize: "0.85rem", color: "#FAFAF7", fontWeight: 600, borderBottom: "1px solid #2A2A2A" }}>{row.gripr}</div>
+                  <div key={row.feature + "p"} style={{ backgroundColor: "#0A0A0A", padding: "1.25rem 1.5rem", fontSize: "0.85rem", color: "#4A4A3F", borderBottom: "1px solid #1A1A1A" }}>{row.ph}</div>
+                  <div key={row.feature + "r"} style={{ backgroundColor: "#0A0A0A", padding: "1.25rem 1.5rem", fontSize: "0.85rem", color: "#4A4A3F", borderBottom: "1px solid #1A1A1A" }}>{row.reddit}</div>
+                </>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRICING ── */}
+        <section style={{ backgroundColor: "#FAFAF7", padding: "6rem 0" }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <div style={{ marginBottom: "3.5rem" }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#E85D04", fontWeight: 500, letterSpacing: "0.1em", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>Pricing</span>
+              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2rem, 4vw, 3rem)", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                Users are free. Forever.<br />Builders pay for the signal.
+              </h2>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }}>
               {/* Basic */}
-              <Card className="bg-[#111] border-white/10 flex flex-col">
-                <CardHeader>
-                  <CardTitle className="text-xl text-slate-300">Builder Basic</CardTitle>
-                  <div className="mt-4 flex items-baseline text-4xl font-extrabold text-white">
-                    ₹499 <span className="ml-1 text-xl font-medium text-slate-500">/mo</span>
-                  </div>
-                  <CardDescription className="text-slate-400 mt-2">Essential signals for indie hackers.</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <ul className="space-y-4 text-slate-300">
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Top 10 weekly digest</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> 1 niche filter</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Access to problem tags</li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10">Join Waitlist</Button>
-                </CardFooter>
-              </Card>
-
-              {/* Pro */}
-              <Card className="bg-gradient-to-b from-orange-900/20 to-[#111] border-orange-500/50 flex flex-col relative transform md:-translate-y-4">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-orange-500 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">
-                  Most Popular
+              <div style={{ border: "1.5px solid #E8E5DF", borderRadius: "1.25rem", padding: "2rem", backgroundColor: "#fff" }}>
+                <h3 style={{ fontSize: "0.85rem", fontWeight: 600, color: "#6B6B5E", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Builder Basic</h3>
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1 }}>
+                  ₹499<span style={{ fontSize: "1rem", color: "#9E9E8E", fontFamily: "'Inter', sans-serif" }}>/mo</span>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-xl text-orange-400">Builder Pro</CardTitle>
-                  <div className="mt-4 flex items-baseline text-4xl font-extrabold text-white">
-                    ₹999 <span className="ml-1 text-xl font-medium text-slate-500">/mo</span>
-                  </div>
-                  <CardDescription className="text-slate-300 mt-2">Deep insights for serious founders.</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <ul className="space-y-4 text-slate-200">
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Real-time alerts</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> 3 niche filters</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Historical trend data</li>
-                    <li className="flex items-center gap-3 font-semibold"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Claim a problem to build</li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full bg-orange-600 hover:bg-orange-700 text-white">Get Early Access</Button>
-                </CardFooter>
-              </Card>
+                <p style={{ color: "#9E9E8E", fontSize: "0.82rem", margin: "0.75rem 0 1.5rem" }}>Essential signals for indie hackers</p>
+                <div style={{ borderTop: "1px solid #E8E5DF", paddingTop: "1.25rem", display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+                  {["Top 10 weekly digest", "1 niche filter", "Access to problem tags"].map(f => (
+                    <div key={f} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#4A4A3F" }}>
+                      <CheckCircle2 size={14} color="#E85D04" /> {f}
+                    </div>
+                  ))}
+                </div>
+                <button style={{ marginTop: "2rem", width: "100%", padding: "0.7rem", border: "1.5px solid #D4D0C8", borderRadius: "999px", backgroundColor: "transparent", color: "#0A0A0A", fontWeight: 600, fontSize: "0.85rem", cursor: "pointer" }}>
+                  Join Waitlist
+                </button>
+              </div>
+
+              {/* Pro — featured */}
+              <div style={{ border: "1.5px solid #0A0A0A", borderRadius: "1.25rem", padding: "2rem", backgroundColor: "#0A0A0A", position: "relative", transform: "translateY(-8px)" }}>
+                <span style={{ position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)", backgroundColor: "#E85D04", color: "#fff", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", padding: "4px 12px", borderRadius: "999px", textTransform: "uppercase", whiteSpace: "nowrap" }}>Most Popular</span>
+                <h3 style={{ fontSize: "0.85rem", fontWeight: 600, color: "#E85D04", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Builder Pro</h3>
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem", color: "#FAFAF7", letterSpacing: "-0.02em", lineHeight: 1 }}>
+                  ₹999<span style={{ fontSize: "1rem", color: "#6B6B5E", fontFamily: "'Inter', sans-serif" }}>/mo</span>
+                </div>
+                <p style={{ color: "#6B6B5E", fontSize: "0.82rem", margin: "0.75rem 0 1.5rem" }}>Deep insights for serious founders</p>
+                <div style={{ borderTop: "1px solid #2A2A2A", paddingTop: "1.25rem", display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+                  {["Real-time alerts", "3 niche filters", "Historical trend data", "Claim a problem to build"].map(f => (
+                    <div key={f} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#D4D0C8" }}>
+                      <CheckCircle2 size={14} color="#E85D04" /> {f}
+                    </div>
+                  ))}
+                </div>
+                <button style={{ marginTop: "2rem", width: "100%", padding: "0.7rem", border: "none", borderRadius: "999px", backgroundColor: "#E85D04", color: "#fff", fontWeight: 700, fontSize: "0.85rem", cursor: "pointer" }}>
+                  Get Early Access
+                </button>
+              </div>
 
               {/* Founding */}
-              <Card className="bg-[#111] border-white/10 flex flex-col relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-1 text-xs font-bold rounded">
-                  50 Spots Only
+              <div style={{ border: "1.5px solid #E8E5DF", borderRadius: "1.25rem", padding: "2rem", backgroundColor: "#fff", position: "relative" }}>
+                <span style={{ position: "absolute", top: "1.5rem", right: "1.5rem", backgroundColor: "#FEE2E2", color: "#C0392B", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.08em", padding: "4px 10px", borderRadius: "999px", textTransform: "uppercase" }}>50 Spots Only</span>
+                <h3 style={{ fontSize: "0.85rem", fontWeight: 600, color: "#6B6B5E", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Founding Member</h3>
+                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.4rem", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1 }}>
+                  ₹4,999<span style={{ fontSize: "0.9rem", color: "#9E9E8E", fontFamily: "'Inter', sans-serif" }}> one-time</span>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-xl text-slate-300">Founding Member</CardTitle>
-                  <div className="mt-4 flex items-baseline text-4xl font-extrabold text-white">
-                    ₹4,999 <span className="ml-1 text-xl font-medium text-slate-500">one-time</span>
-                  </div>
-                  <CardDescription className="text-slate-400 mt-2">Lifetime access for early believers.</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <ul className="space-y-4 text-slate-300">
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Lifetime Builder Pro access</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Private founder Discord</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Direct feature requests</li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" className="w-full border-orange-500/50 text-orange-400 hover:bg-orange-500/10">Secure Spot</Button>
-                </CardFooter>
-              </Card>
+                <p style={{ color: "#9E9E8E", fontSize: "0.82rem", margin: "0.75rem 0 1.5rem" }}>Lifetime Pro access for early believers</p>
+                <div style={{ borderTop: "1px solid #E8E5DF", paddingTop: "1.25rem", display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+                  {["Lifetime Builder Pro access", "Private founder Discord", "Direct feature requests"].map(f => (
+                    <div key={f} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#4A4A3F" }}>
+                      <CheckCircle2 size={14} color="#E85D04" /> {f}
+                    </div>
+                  ))}
+                </div>
+                <button style={{ marginTop: "2rem", width: "100%", padding: "0.7rem", border: "1.5px solid #E85D04", borderRadius: "999px", backgroundColor: "transparent", color: "#E85D04", fontWeight: 700, fontSize: "0.85rem", cursor: "pointer" }}>
+                  Secure a Spot →
+                </button>
+              </div>
             </div>
-            
-            <div className="text-center mt-8 text-slate-500 text-sm">
-              Agency or VC? Need API access? <a href="#" className="text-orange-400 hover:underline">Contact us</a> for the ₹4,999/mo plan.
-            </div>
+
+            {/* Agency footnote */}
+            <p style={{ textAlign: "center", marginTop: "2rem", color: "#9E9E8E", fontSize: "0.82rem" }}>
+              Need API access & custom geo filters? <span style={{ color: "#4A4A3F", fontWeight: 600 }}>Agency / VC plan — ₹4,999/mo.</span> <a href="#waitlist-form" style={{ color: "#E85D04", textDecoration: "none", fontWeight: 600 }}>Contact us →</a>
+            </p>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-32 relative overflow-hidden">
-          <div className="absolute inset-0 bg-orange-600">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10 text-center">
-            <h2 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-8">
-              The signal is loud.<br />Are you listening?
-            </h2>
-            <p className="text-2xl text-orange-100 max-w-2xl mx-auto mb-12 font-medium">
-              Join 340+ builders getting validated Indian problems sent directly to their inbox.
-            </p>
-            
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto relative">
-              <div className="flex shadow-2xl rounded-full bg-black/20 border border-white/20 p-1 backdrop-blur-sm focus-within:border-white/50 transition-colors">
-                <Input 
-                  type="email" 
-                  placeholder="builder@example.com" 
-                  className="bg-transparent border-0 focus-visible:ring-0 text-white placeholder:text-white/60 px-6 h-14 text-lg"
+        {/* ── FINAL CTA ── */}
+        <section style={{ backgroundColor: "#F2EFE9", padding: "7rem 0", borderTop: "1px solid #E8E5DF" }}>
+          <div className="max-w-7xl mx-auto px-6" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
+            <div>
+              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2.2rem, 4vw, 3.8rem)", color: "#0A0A0A", letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: "1.25rem" }}>
+                Don't write a single line of code until you know they'll buy.
+              </h2>
+              <p style={{ color: "#6B6B5E", fontSize: "1rem", lineHeight: 1.7, maxWidth: "28rem" }}>
+                83% of builders waste 3+ months building something nobody wanted — not because they were bad builders, but because they never had validated demand before Day 1.
+              </p>
+              <p style={{ marginTop: "1.5rem", fontFamily: "'DM Serif Display', serif", fontSize: "1.15rem", color: "#E85D04", fontStyle: "italic" }}>
+                GRIPR changes that. For Bharat.
+              </p>
+            </div>
+            <div style={{ backgroundColor: "#fff", border: "1.5px solid #E8E5DF", borderRadius: "1.5rem", padding: "2.5rem" }}>
+              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.6rem", color: "#0A0A0A", marginBottom: "0.5rem" }}>Join the Waitlist</h3>
+              <p style={{ color: "#9E9E8E", fontSize: "0.85rem", marginBottom: "1.5rem" }}>340+ builders already inside. Limited founding spots.</p>
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                <input
+                  type="email"
+                  placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  style={{
+                    border: "1.5px solid #D4D0C8", borderRadius: "0.75rem",
+                    padding: "0.75rem 1rem", fontSize: "0.9rem",
+                    outline: "none", backgroundColor: "#FAFAF7",
+                    color: "#0A0A0A", fontFamily: "'Inter', sans-serif", width: "100%",
+                    boxSizing: "border-box"
+                  }}
                 />
-                <Button type="submit" className="bg-white text-orange-600 hover:bg-slate-100 rounded-full h-14 px-8 font-bold text-lg">
-                  {submitted ? "Added to Waitlist" : "Join Waitlist"}
-                </Button>
+                <button
+                  type="submit"
+                  style={{
+                    backgroundColor: submitted ? "#2D6A4F" : "#0A0A0A",
+                    color: "#FAFAF7", border: "none", borderRadius: "0.75rem",
+                    padding: "0.85rem", fontSize: "0.9rem", fontWeight: 700,
+                    cursor: "pointer", transition: "background-color 0.2s",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem"
+                  }}
+                >
+                  {submitted ? "You're on the list ✓" : (<>Get Early Access <ArrowRight size={15} /></>)}
+                </button>
+              </form>
+              <div style={{ marginTop: "1.25rem", display: "flex", gap: "1rem", fontSize: "0.75rem", color: "#B0AC9E" }}>
+                <span>✓ Free for users</span>
+                <span>✓ No spam</span>
+                <span>✓ Unsubscribe anytime</span>
               </div>
-            </form>
+            </div>
           </div>
         </section>
 
-      </main>
-
-      {/* FOOTER */}
-      <footer className="bg-[#050505] border-t border-white/10 py-12">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <Zap className="w-6 h-6 text-orange-500 fill-orange-500" />
-            <span className="text-xl font-bold tracking-tight text-white">GRIPR</span>
+        {/* ── FOOTER ── */}
+        <footer style={{ backgroundColor: "#0A0A0A", padding: "2.5rem 0" }}>
+          <div className="max-w-7xl mx-auto px-6" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+            <span style={{ fontFamily: "'DM Serif Display', serif", color: "#FAFAF7", fontSize: "1.1rem" }}>GRIPR</span>
+            <span style={{ color: "#4A4A3F", fontSize: "0.8rem", fontStyle: "italic" }}>India bolti hai. Builders sunenge.</span>
+            <span style={{ color: "#2A2A2A", fontSize: "0.75rem" }}>Built in Jaipur, Rajasthan 🇮🇳 · 2025</span>
           </div>
-          <p className="text-slate-500 text-sm">
-            © 2024 GRIPR. Founded in Jaipur, Rajasthan.
-          </p>
-          <div className="flex gap-4 text-sm text-slate-400">
-            <a href="#" className="hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </>
   );
 }
