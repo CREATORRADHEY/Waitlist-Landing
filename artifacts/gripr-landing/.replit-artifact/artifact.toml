@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "GRIPR — Waitlist Landing Page"
+version = "1.0.0"
+id = "artifacts/gripr-landing"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24589
+
+[services.development]
+run = "pnpm --filter @workspace/gripr-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/gripr-landing", "run", "build" ]
+publicDir = "artifacts/gripr-landing/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24589"
+BASE_PATH = "/"
