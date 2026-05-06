@@ -38,10 +38,18 @@ export function QualifyPage() {
       style={{ fontFamily: "'Manrope', sans-serif", backgroundColor: "#FAFAF7", color: "#0A0A0A", minHeight: "100vh" }}
     >
       {/* Nav */}
-      <div style={{ borderBottom: "1px solid #E8E5DF", padding: "1rem 1.5rem", display: "flex", alignItems: "center" }}>
+      <div style={{ borderBottom: "1px solid #E8E5DF", padding: "1rem 1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <span style={{ fontFamily: "'Fraunces', serif", fontSize: "1.3rem", fontWeight: 700, letterSpacing: "-0.03em" }}>
           GRIPR
         </span>
+        <button
+          onClick={() => navigate("/")}
+          style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.4rem", color: "#6B6B5E", fontSize: "0.85rem", fontFamily: "'Manrope', sans-serif", fontWeight: 500, padding: "0.35rem 0.75rem", borderRadius: "999px", transition: "background 0.15s" }}
+          onMouseOver={e => (e.currentTarget.style.background = "#F2EFE9")}
+          onMouseOut={e => (e.currentTarget.style.background = "none")}
+        >
+          ← Back
+        </button>
       </div>
 
       <div style={{ maxWidth: "560px", margin: "0 auto", padding: "5rem 1.5rem 4rem" }}>
