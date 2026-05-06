@@ -109,6 +109,31 @@ export function ThankYouPage() {
             <p style={{ fontSize: "0.75rem", color: "#8A8A78", marginTop: "0.5rem" }}>— Divyansh Dusad, Founder, Jaipur</p>
           </div>
 
+          {/* WhatsApp sample report hook */}
+          <motion.a
+            href="https://wa.me/919XXXXXXXXX?text=Hey%2C%20I%20just%20joined%20GRIPR%20%E2%80%94%20can%20I%20get%20a%20sample%20problem%20report%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "flex", alignItems: "center", gap: "0.85rem",
+              backgroundColor: "#F0FFF4", border: "1.5px solid #86EFAC",
+              borderRadius: "1rem", padding: "1.1rem 1.5rem",
+              textDecoration: "none", marginBottom: "2rem",
+            }}
+            whileHover={{ scale: 1.02, borderColor: "#25D366" }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span style={{ fontSize: "1.4rem", flexShrink: 0 }}>💬</span>
+            <div>
+              <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#166534", marginBottom: "0.2rem", fontFamily: "'Manrope', sans-serif" }}>
+                Get a sample problem report on WhatsApp
+              </div>
+              <div style={{ fontSize: "0.75rem", color: "#4ADE80" }}>
+                See exactly what you'll receive every Monday →
+              </div>
+            </div>
+          </motion.a>
+
           {/* Share */}
           <p style={{ fontSize: "0.875rem", color: "#6B6B5E", marginBottom: "1rem", fontWeight: 500 }}>
             Know a builder who should see this?

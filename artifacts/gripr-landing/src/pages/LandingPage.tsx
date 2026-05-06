@@ -151,6 +151,12 @@ export function LandingPage() {
         </motion.div>
 
         <div className="max-w-5xl">
+          <motion.p
+            style={{ fontFamily: "'Space Mono', monospace", fontSize: "clamp(1rem, 2vw, 1.3rem)", color: "#4A4A3F", letterSpacing: "-0.01em", marginBottom: "0.5rem", fontWeight: 400 }}
+            initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          >
+            Stop guessing what to build.
+          </motion.p>
           <motion.h1
             style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(3.2rem, 7.5vw, 7.5rem)", lineHeight: 0.98, letterSpacing: "-0.04em", color: "#0A0A0A", marginBottom: "1.75rem", fontWeight: 800 }}
             initial={{ opacity: 0, y: 40 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -175,7 +181,7 @@ export function LandingPage() {
         >
           <input
             type="email"
-            placeholder="you@example.com"
+            placeholder="Enter your email to get problem reports"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -186,7 +192,7 @@ export function LandingPage() {
             style={{ backgroundColor: "#E85D04", color: "#fff", border: "none", borderRadius: "999px", padding: "0.75rem 1.8rem", fontSize: "0.95rem", fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", gap: "0.4rem", whiteSpace: "nowrap" }}
             whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
           >
-            Request Early Access <ArrowRight size={15} />
+            Get Early Access <ArrowRight size={15} />
           </motion.button>
         </motion.form>
 
@@ -196,7 +202,7 @@ export function LandingPage() {
         >
           <Lock size={12} color="#8A8A78" />
           <p style={{ fontSize: "0.8rem", color: "#9E9E8E" }}>
-            We review every application manually · ₹0 for users · Not everyone gets in
+            Used by 300+ builders already · ₹0 for users · We review every application manually
           </p>
         </motion.div>
 
@@ -226,9 +232,12 @@ export function LandingPage() {
             <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#E85D04", fontWeight: 400, letterSpacing: "0.12em", display: "block", marginBottom: "0.85rem", textTransform: "uppercase" }}>
               ● Real problems. Unfiltered.
             </span>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.04em", color: "#0A0A0A", lineHeight: 1.05, fontWeight: 700, marginBottom: "2.5rem", maxWidth: "28rem" }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.04em", color: "#0A0A0A", lineHeight: 1.05, fontWeight: 700, marginBottom: "0.85rem", maxWidth: "28rem" }}>
               This is what India is actually saying.
             </h2>
+            <p style={{ fontSize: "0.95rem", color: "#6B6B5E", marginBottom: "2.5rem", maxWidth: "32rem", lineHeight: 1.65 }}>
+              These are not ideas. These are real problems people face daily.
+            </p>
           </FadeUp>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.5rem" }}>
@@ -276,7 +285,7 @@ export function LandingPage() {
             </FadeUp>
             <FadeUp delay={0.15}>
               <p style={{ color: "#6B6B5E", fontSize: "0.95rem", maxWidth: "22rem", lineHeight: 1.75, fontWeight: 400 }}>
-                Three coordinated AI agents process every submission in real time — no opinions, just demand data.
+                No opinions. No guessing. Just real demand, ranked by frequency.
               </p>
             </FadeUp>
           </div>
@@ -306,7 +315,7 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <FadeUp>
             <div style={{ marginBottom: "3.5rem" }}>
-              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#E85D04", fontWeight: 400, letterSpacing: "0.12em", display: "block", marginBottom: "0.85rem", textTransform: "uppercase" }}>Why GRIPR?</span>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", color: "#E85D04", fontWeight: 400, letterSpacing: "0.12em", display: "block", marginBottom: "0.85rem", textTransform: "uppercase" }}>Why builders are switching</span>
               <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(2.2rem, 4vw, 3.4rem)", color: "#FAFAF7", letterSpacing: "-0.04em", lineHeight: 0.98, fontWeight: 700 }}>
                 The world builds for the US.<br />We build for Bharat — and the world.
               </h2>
@@ -353,8 +362,11 @@ export function LandingPage() {
                   We're onboarding the first set of builders manually.<br />
                   <em style={{ color: "#E85D04", fontStyle: "italic", fontWeight: 300 }}>Not everyone gets in.</em>
                 </h2>
-                <p style={{ color: "#6B6B5E", fontSize: "1rem", lineHeight: 1.75, maxWidth: "28rem", marginBottom: "2rem" }}>
+                <p style={{ color: "#6B6B5E", fontSize: "1rem", lineHeight: 1.75, maxWidth: "28rem", marginBottom: "1.25rem" }}>
                   We're selecting based on interest and intent — not first-come-first-served. Early builders will shape what GRIPR becomes.
+                </p>
+                <p style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.72rem", color: "#E85D04", fontWeight: 700, letterSpacing: "0.06em", marginBottom: "2rem" }}>
+                  ⚡ Only a few spots open this week.
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
                   {[
@@ -395,7 +407,7 @@ export function LandingPage() {
               </div>
 
               <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "1.5rem", color: "#0A0A0A", marginBottom: "0.4rem", fontWeight: 700, letterSpacing: "-0.03em" }}>
-                Request Early Access
+                Get Early Access
               </h3>
               <p style={{ color: "#9E9E8E", fontSize: "0.85rem", marginBottom: "1.5rem" }}>
                 We'll review your application and reach out personally.
@@ -404,7 +416,7 @@ export function LandingPage() {
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                 <input
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="Enter your email to get problem reports"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -415,7 +427,7 @@ export function LandingPage() {
                   style={{ backgroundColor: "#E85D04", color: "#FAFAF7", border: "none", borderRadius: "0.75rem", padding: "0.85rem", fontSize: "0.9rem", fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem", fontFamily: "'Manrope', sans-serif" }}
                   whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
                 >
-                  Request Early Access <ArrowRight size={15} />
+                  Get Early Access <ArrowRight size={15} />
                 </motion.button>
               </form>
 
@@ -448,7 +460,7 @@ export function LandingPage() {
               style={{ backgroundColor: "#E85D04", color: "#fff", border: "none", borderRadius: "999px", padding: "0.9rem 2.2rem", fontSize: "1rem", fontWeight: 700, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "'Manrope', sans-serif" }}
               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}
             >
-              Request Early Access <ArrowUpRight size={16} />
+              Get Early Access <ArrowUpRight size={16} />
             </motion.button>
             <p style={{ color: "#2A2A2A", fontSize: "0.78rem", marginTop: "1.25rem" }}>
               We review every application · Reach out if selected · No spam
